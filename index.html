@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jose Luis "Pepe" Pagan | UPM Productions</title>
+    <meta name="description" content="Jose Luis 'Pepe' Pagan — Music Producer, TV Series Creator, Songwriter, Score Writer, and IP Content Creator. Founder of UPM Productions.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg:       #080B14;
+            --bg2:      #0D1120;
+            --bg3:      #111827;
+            --blue:     #00D4FF;
+            --blue-dim: rgba(0,212,255,0.12);
+            --white:    #FFFFFF;
+            --gray:     #8A9BB5;
+            --gray-light:#C5CDD9;
+            --font-display: 'Anton', sans-serif;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body:    'Inter', sans-serif;
+        }
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg); color: var(--white); font-family: var(--font-body); line-height:1.6; overflow-x:hidden; }
+        ::-webkit-scrollbar { width:4px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--blue); border-radius:2px; }
+
+        /* ── NAV ── */
+        nav {
+            position:fixed; top:0; left:0; right:0; z-index:1000;
+            padding:1.2rem 5rem;
+            display:flex; align-items:center; justify-content:space-between;
+            background:rgba(8,11,20,0.82); backdrop-filter:blur(16px);
+            border-bottom:1px solid rgba(0,212,255,0.07);
+            transition:all 0.3s;
+        }
+        nav.scrolled { padding:.85rem 5rem; background:rgba(8,11,20,0.97); }
+        .nav-logo img { height:64px; width:auto; display:block; }
+        .nav-links { display:flex; gap:2.5rem; list-style:none; }
+        .nav-links a {
+            color:var(--gray-light); text-decoration:none;
+            font-family:var(--font-heading); font-weight:500;
+            font-size:.75rem; letter-spacing:.14em; text-transform:uppercase;
+            transition:color .3s; position:relative;
+        }
+        .nav-links a::after {
+            content:''; position:absolute; bottom:-4px; left:0;
+            width:0; height:1px; background:var(--blue); transition:width .3s;
+        }
+        .nav-links a:hover { color:var(--blue); }
+        .nav-links a:hover::after { width:100%; }
+        .nav-cta {
+            border:1px solid var(--blue) !important; color:var(--blue) !important;
+            padding:.5rem 1.3rem; border-radius:2px; transition:all .3s !important;
+        }
+        .nav-cta:hover { background:var(--blue) !important; color:var(--bg) !important; }
+        .nav-cta::after { display:none !important; }
+        .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+        .hamburger span { display:block; width:24px; height:2px; background:var(--white); transition:all .3s; }
+
+        /* ── HERO ── */
+        #hero {
+            position:relative; min-height:100vh;
+            display:flex; align-items:center;
+            overflow:hidden; padding:0 5rem;
+        }
+        .hero-bg {
+            position:absolute; inset:0;
+            background:
+                radial-gradient(ellipse at 72% 50%, rgba(0,212,255,.07) 0%, transparent 60%),
+                radial-gradient(ellipse at 18% 80%, rgba(0,212,255,.04) 0%, transparent 50%);
+        }
+        .hero-grid {
+            position:absolute; inset:0;
+            background-image:
+                linear-gradient(rgba(0,212,255,.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,212,255,.025) 1px, transparent 1px);
+            background-size:70px 70px;
+        }
+        .hero-orb {
+            position:absolute; right:-8%; top:50%; transform:translateY(-50%);
+            width:750px; height:750px; border-radius:50%;
+            background:radial-gradient(circle, rgba(0,212,255,.09) 0%, transparent 70%);
+            animation:orb-pulse 7s ease-in-out infinite;
+        }
+        @keyframes orb-pulse {
+            0%,100% { transform:translateY(-50%) scale(1); opacity:.6; }
+            50%      { transform:translateY(-50%) scale(1.12); opacity:1; }
+        }
+        .hero-content { position:relative; z-index:1; max-width:950px; }
+        .hero-eyebrow { display:flex; align-items:center; gap:1rem; margin-bottom:1.6rem; }
+        .hero-eyebrow-line { width:40px; height:1px; background:var(--blue); }
+        .hero-eyebrow-text {
+            font-family:var(--font-heading); font-size:.72rem; font-weight:600;
+            letter-spacing:.35em; text-transform:uppercase; color:var(--blue);
+        }
+        .hero-name {
+            font-family:'Anton', sans-serif;
+            font-size:clamp(3rem,7.5vw,7rem);
+            line-height:.92; letter-spacing:.04em;
+            color:var(--white); margin-bottom:.3rem;
+        }
+        .hero-name .nick { color:var(--blue); }
+        .hero-sub {
+            font-family:var(--font-heading); font-weight:300;
+            font-size:clamp(1rem,2vw,1.4rem);
+            letter-spacing:.25em; text-transform:uppercase;
+            color:var(--gray); margin-bottom:1.8rem;
+        }
+        .hero-roles { display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:3rem; }
+        .role-tag {
+            font-family:var(--font-heading); font-size:.68rem; font-weight:600;
+            letter-spacing:.14em; text-transform:uppercase; color:var(--blue);
+            border:1px solid rgba(0,212,255,.28); padding:.4rem .9rem;
+            border-radius:2px; background:rgba(0,212,255,.05);
+        }
+        .hero-ctas { display:flex; gap:1.2rem; align-items:center; }
+        .btn-primary {
+            display:inline-flex; align-items:center; gap:.5rem;
+            background:var(--blue); color:var(--bg);
+            font-family:var(--font-heading); font-weight:700;
+            font-size:.78rem; letter-spacing:.18em; text-transform:uppercase;
+            padding:.95rem 2.2rem; border:none; border-radius:2px;
+            cursor:pointer; text-decoration:none;
+            transition:all .3s; position:relative; overflow:hidden;
+        }
+        .btn-primary::before {
+            content:''; position:absolute; inset:0;
+            background:rgba(255,255,255,.18); transform:translateX(-110%); transition:transform .35s;
+        }
+        .btn-primary:hover::before { transform:translateX(0); }
+        .btn-primary:hover { box-shadow:0 0 35px rgba(0,212,255,.45); }
+        .btn-outline {
+            display:inline-flex; align-items:center;
+            background:transparent; color:var(--white);
+            font-family:var(--font-heading); font-weight:600;
+            font-size:.78rem; letter-spacing:.18em; text-transform:uppercase;
+            padding:.95rem 2.2rem; border:1px solid rgba(255,255,255,.18);
+            border-radius:2px; cursor:pointer; text-decoration:none; transition:all .3s;
+        }
+        .btn-outline:hover { border-color:var(--blue); color:var(--blue); }
+        .scroll-hint {
+            position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%);
+            display:flex; flex-direction:column; align-items:center; gap:.5rem;
+            animation:hint-bounce 2s ease-in-out infinite; opacity:.35;
+        }
+        .scroll-hint span {
+            font-family:var(--font-heading); font-size:.6rem;
+            letter-spacing:.28em; text-transform:uppercase; color:var(--gray);
+        }
+        .scroll-chevron {
+            width:18px; height:18px;
+            border-right:1px solid var(--gray); border-bottom:1px solid var(--gray);
+            transform:rotate(45deg);
+        }
+        @keyframes hint-bounce {
+            0%,100% { transform:translateX(-50%) translateY(0); }
+            50%      { transform:translateX(-50%) translateY(7px); }
+        }
+
+        /* ── SHARED ── */
+        section { padding:7rem 5rem; }
+        .section-label { display:flex; align-items:center; gap:1rem; margin-bottom:.8rem; }
+        .section-label-line { width:28px; height:1px; background:var(--blue); }
+        .section-label-text {
+            font-family:var(--font-heading); font-size:.68rem; font-weight:600;
+            letter-spacing:.38em; text-transform:uppercase; color:var(--blue);
+        }
+        .section-title {
+            font-family:var(--font-display); font-size:clamp(2.8rem,6vw,5.5rem);
+            line-height:.93; letter-spacing:.02em; margin-bottom:1.4rem;
+        }
+        .section-subtitle { font-size:1rem; color:var(--gray); line-height:1.85; max-width:580px; }
+        .reveal { opacity:0; transform:translateY(32px); transition:opacity .85s ease, transform .85s ease; }
+        .reveal.visible { opacity:1; transform:translateY(0); }
+        .d1{transition-delay:.1s;} .d2{transition-delay:.2s;} .d3{transition-delay:.3s;} .d4{transition-delay:.4s;}
+
+        /* ── MARQUEE ── */
+        .marquee-strip { background:var(--blue); padding:.85rem 0; overflow:hidden; white-space:nowrap; }
+        .marquee-track { display:inline-flex; animation:scroll-marquee 22s linear infinite; }
+        .marquee-item {
+            font-family:var(--font-heading); font-size:.72rem; font-weight:800;
+            letter-spacing:.22em; text-transform:uppercase; color:var(--bg); padding:0 2.2rem;
+        }
+        .marquee-sep { color:rgba(8,11,20,.35); }
+        @keyframes scroll-marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+        /* ── ABOUT ── */
+        #about { background:var(--bg2); }
+        .about-grid {
+            display:grid; grid-template-columns:1fr 1.15fr;
+            gap:5rem; align-items:center; max-width:1200px; margin:0 auto;
+        }
+        .about-img-wrap { position:relative; }
+        .about-img-frame {
+            position:absolute; top:-14px; left:-14px; right:14px; bottom:14px;
+            border:1px solid rgba(0,212,255,.18); border-radius:4px; pointer-events:none; z-index:0;
+        }
+        .about-img-box {
+            position:relative; z-index:1; width:100%; aspect-ratio:3/4;
+            background:#000;
+            border-radius:4px; overflow:hidden;
+            display:flex; align-items:center; justify-content:center;
+        }
+        .about-img-box img { width:100%; height:100%; object-fit:cover; display:block; }
+        .about-img-placeholder {
+            font-family:var(--font-heading); font-size:.7rem; letter-spacing:.22em;
+            color:var(--gray); text-transform:uppercase; text-align:center; opacity:.5;
+        }
+        .about-stats { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.5rem; }
+        .stat-card {
+            padding:1.4rem 1.6rem; background:var(--bg3);
+            border:1px solid rgba(0,212,255,.08); border-radius:4px;
+        }
+        .stat-num { font-family:var(--font-display); font-size:2.6rem; color:var(--blue); line-height:1; margin-bottom:.25rem; }
+        .stat-lbl {
+            font-family:var(--font-heading); font-size:.65rem; font-weight:600;
+            letter-spacing:.16em; text-transform:uppercase; color:var(--gray);
+        }
+        .about-text p { font-size:1.02rem; color:var(--gray-light); line-height:1.95; margin-bottom:1.2rem; }
+        .about-text p strong { color:var(--white); font-weight:600; }
+
+        /* ── EXPERTISE ── */
+        #expertise { background:var(--bg); }
+        .expertise-top {
+            display:flex; justify-content:space-between; align-items:flex-end;
+            max-width:1200px; margin:0 auto 3.5rem; gap:2rem;
+        }
+        .expertise-grid {
+            display:grid; grid-template-columns:repeat(3,1fr);
+            gap:1.5px; background:rgba(0,212,255,.07);
+            max-width:1200px; margin:0 auto;
+        }
+        .exp-card {
+            background:var(--bg); padding:3rem 2.5rem;
+            position:relative; overflow:hidden; transition:background .3s; cursor:default;
+        }
+        .exp-card::before {
+            content:''; position:absolute; top:0; left:0; right:0; height:2px;
+            background:var(--blue); transform:scaleX(0); transform-origin:left; transition:transform .4s;
+        }
+        .exp-card:hover::before { transform:scaleX(1); }
+        .exp-card:hover { background:var(--bg2); }
+        .exp-num {
+            font-family:var(--font-display); font-size:4.5rem;
+            color:rgba(0,212,255,.08); line-height:1; margin-bottom:1.5rem; transition:color .3s;
+        }
+        .exp-card:hover .exp-num { color:rgba(0,212,255,.18); }
+        .exp-icon {
+            width:50px; height:50px; background:var(--blue-dim); border-radius:4px;
+            display:flex; align-items:center; justify-content:center; margin-bottom:1.5rem; font-size:1.4rem;
+        }
+        .exp-title { font-family:var(--font-heading); font-size:1.05rem; font-weight:700; letter-spacing:.04em; margin-bottom:.9rem; }
+        .exp-text { font-size:.88rem; color:var(--gray); line-height:1.85; }
+
+        /* ── COMPANIES ── */
+        #companies { background:var(--bg2); }
+        .companies-wrap { max-width:1200px; margin:0 auto; }
+        .company-flagship {
+            display:flex; align-items:center; gap:3rem;
+            background:var(--bg3); border:1px solid rgba(0,212,255,.14);
+            border-radius:4px; padding:3rem; margin-bottom:1.5rem;
+            position:relative; overflow:hidden;
+        }
+        .company-flagship::before {
+            content:''; position:absolute; left:0; top:0; bottom:0;
+            width:3px; background:var(--blue);
+        }
+        .flagship-badge {
+            flex-shrink:0; width:88px; height:88px;
+            background:var(--blue-dim); border:1px solid rgba(0,212,255,.28);
+            border-radius:4px; display:flex; align-items:center; justify-content:center;
+            font-family:var(--font-display); font-size:1.15rem; color:var(--blue);
+            letter-spacing:.05em; text-align:center; line-height:1.15;
+        }
+        .flagship-name { font-family:var(--font-display); font-size:2.8rem; letter-spacing:.04em; margin-bottom:.5rem; }
+        .flagship-desc { font-size:.95rem; color:var(--gray); line-height:1.75; max-width:680px; }
+        .subs-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+        .sub-card {
+            background:var(--bg3); border:1px solid rgba(255,255,255,.05);
+            border-radius:4px; padding:2.2rem 1.6rem; text-align:center;
+            transition:all .3s; position:relative; overflow:hidden;
+        }
+        .sub-card::after {
+            content:''; position:absolute; bottom:0; left:0; right:0;
+            height:2px; background:var(--blue); transform:scaleX(0); transition:transform .3s;
+        }
+        .sub-card:hover::after { transform:scaleX(1); }
+        .sub-card:hover { border-color:rgba(0,212,255,.18); transform:translateY(-5px); }
+        .sub-icon {
+            width:50px; height:50px; background:var(--blue-dim); border-radius:50%;
+            display:flex; align-items:center; justify-content:center; margin:0 auto 1rem; font-size:1.25rem;
+        }
+        .sub-name { font-family:var(--font-heading); font-size:.82rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; margin-bottom:.6rem; }
+        .sub-desc { font-size:.8rem; color:var(--gray); line-height:1.7; }
+
+        /* ── GALLERY ── */
+        #gallery { background:var(--bg); }
+        .gallery-top { max-width:1200px; margin:0 auto 2.5rem; }
+        .gallery-grid {
+            display:grid; grid-template-columns:repeat(12,1fr);
+            gap:1rem; max-width:1200px; margin:0 auto;
+        }
+        .g-item { grid-column:span 4; }
+        .g-item.wide { grid-column:span 8; grid-row:span 2; }
+        .g-item.tall { grid-column:span 4; }
+        .g-box {
+            width:100%; height:200px;
+            background:linear-gradient(135deg,#111827,#1a2236 60%,#0f1923);
+            border-radius:4px; overflow:hidden; position:relative; cursor:pointer;
+        }
+        .g-item.wide .g-box { height:100%; min-height:410px; }
+        .g-box img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s; }
+        .g-box:hover img { transform:scale(1.04); }
+        .g-inner {
+            position:absolute; inset:0;
+            display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.5rem;
+        }
+        .g-inner-icon { font-size:2rem; opacity:.12; }
+        .g-inner-lbl {
+            font-family:var(--font-heading); font-size:.6rem; letter-spacing:.22em;
+            text-transform:uppercase; color:var(--gray); opacity:.4;
+        }
+        .g-hover {
+            position:absolute; inset:0;
+            background:rgba(0,212,255,.07); opacity:0; transition:opacity .3s;
+        }
+        .g-box:hover .g-hover { opacity:1; }
+        .g-caption {
+            position:absolute; bottom:0; left:0; right:0; padding:1.2rem 1.5rem;
+            background:linear-gradient(transparent,rgba(8,11,20,.92));
+            opacity:0; transform:translateY(4px); transition:all .3s;
+        }
+        .g-box:hover .g-caption { opacity:1; transform:translateY(0); }
+        .g-cap-label {
+            font-family:var(--font-heading); font-size:.62rem; font-weight:600;
+            letter-spacing:.22em; text-transform:uppercase; color:var(--blue); margin-bottom:.2rem;
+        }
+        .g-cap-title { font-family:var(--font-heading); font-size:.9rem; font-weight:700; color:var(--white); }
+        .gallery-note {
+            text-align:center; margin-top:2rem; max-width:1200px; margin-left:auto; margin-right:auto;
+            font-family:var(--font-heading); font-size:.7rem; letter-spacing:.18em;
+            text-transform:uppercase; color:var(--gray); opacity:.4;
+        }
+
+        /* ── WORKS TABS ── */
+        .works-tabs {
+            display:flex; gap:0; max-width:1200px; margin:0 auto 0;
+            border-bottom:1px solid rgba(0,212,255,.12);
+        }
+        .works-tab {
+            display:flex; align-items:center; gap:.6rem;
+            background:transparent; border:none; border-bottom:2px solid transparent;
+            color:var(--gray); font-family:var(--font-heading); font-weight:600;
+            font-size:.78rem; letter-spacing:.12em; text-transform:uppercase;
+            padding:1.1rem 2rem; cursor:pointer;
+            transition:all .3s; margin-bottom:-1px;
+        }
+        .works-tab .tab-icon { font-size:1rem; }
+        .works-tab:hover { color:var(--white); }
+        .works-tab.active { color:var(--blue); border-bottom-color:var(--blue); }
+        .works-panel { display:none; max-width:1200px; margin:0 auto; padding-top:2.5rem; }
+        .works-panel.active { display:block; }
+        .works-grid {
+            display:grid; grid-template-columns:repeat(3,1fr);
+            gap:1.5rem;
+        }
+        .work-card {
+            background:var(--bg3); border:1px solid rgba(255,255,255,.05);
+            border-radius:4px; overflow:hidden;
+            transition:all .3s; cursor:pointer;
+        }
+        .work-card:hover { border-color:rgba(0,212,255,.2); transform:translateY(-4px); }
+        .work-img {
+            width:100%; aspect-ratio:16/9;
+            overflow:hidden; position:relative;
+        }
+        .work-img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s; }
+        .work-card:hover .work-img img { transform:scale(1.05); }
+        .work-placeholder {
+            width:100%; height:100%;
+            background:linear-gradient(135deg,#111827,#1a2236);
+            display:flex; flex-direction:column;
+            align-items:center; justify-content:center; gap:.5rem;
+        }
+        .work-placeholder span { font-size:2rem; opacity:.15; }
+        .work-placeholder p {
+            font-family:var(--font-heading); font-size:.6rem;
+            letter-spacing:.2em; text-transform:uppercase;
+            color:var(--gray); opacity:.4;
+        }
+        .work-info { padding:1.2rem 1.4rem; }
+        .work-cat {
+            font-family:var(--font-heading); font-size:.62rem; font-weight:600;
+            letter-spacing:.2em; text-transform:uppercase;
+            color:var(--blue); margin-bottom:.4rem;
+        }
+        .work-title {
+            font-family:var(--font-heading); font-size:.95rem;
+            font-weight:700; color:var(--white);
+        }
+        @media (max-width:768px) {
+            .works-tabs { flex-direction:column; border-bottom:none; }
+            .works-tab { border-bottom:none; border-left:2px solid transparent; padding:.9rem 1.2rem; }
+            .works-tab.active { border-left-color:var(--blue); border-bottom:none; }
+            .works-grid { grid-template-columns:1fr 1fr; }
+        }
+        @media (max-width:480px) {
+            .works-grid { grid-template-columns:1fr; }
+        }
+
+        /* ── CONTACT ── */
+        #contact { background:var(--bg2); }
+        .contact-wrap {
+            max-width:1150px; margin:0 auto;
+            display:grid; grid-template-columns:1fr 1.6fr; gap:5rem; align-items:start;
+        }
+        .contact-left p { font-size:.95rem; color:var(--gray); line-height:1.85; margin-bottom:2.5rem; }
+        .c-detail { display:flex; align-items:center; gap:1rem; margin-bottom:1.2rem; }
+        .c-icon {
+            width:42px; height:42px; background:var(--blue-dim); border-radius:4px;
+            display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0;
+        }
+        .c-lbl {
+            font-family:var(--font-heading); font-size:.62rem; font-weight:600;
+            letter-spacing:.22em; text-transform:uppercase; color:var(--blue); margin-bottom:.2rem;
+        }
+        .c-val { font-size:.88rem; color:var(--gray-light); }
+        .contact-form {
+            background:var(--bg3); border:1px solid rgba(0,212,255,.1);
+            border-radius:4px; padding:3rem;
+        }
+        .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; }
+        .fg { margin-bottom:1.4rem; }
+        .fg label {
+            display:block; font-family:var(--font-heading); font-size:.65rem; font-weight:600;
+            letter-spacing:.18em; text-transform:uppercase; color:var(--gray); margin-bottom:.55rem;
+        }
+        .fg input,.fg textarea,.fg select {
+            width:100%; background:var(--bg2); border:1px solid rgba(255,255,255,.07);
+            border-radius:2px; color:var(--white); font-family:var(--font-body);
+            font-size:.9rem; padding:.88rem 1rem; outline:none; transition:border-color .3s; -webkit-appearance:none;
+        }
+        .fg input:focus,.fg textarea:focus,.fg select:focus { border-color:var(--blue); }
+        .fg input::placeholder,.fg textarea::placeholder { color:rgba(138,155,181,.38); }
+        .fg textarea { resize:vertical; min-height:130px; }
+        .fg select option { background:var(--bg2); color:var(--white); }
+        .form-btn {
+            width:100%; background:var(--blue); color:var(--bg);
+            font-family:var(--font-heading); font-weight:700; font-size:.82rem;
+            letter-spacing:.22em; text-transform:uppercase; padding:1rem;
+            border:none; border-radius:2px; cursor:pointer; transition:all .3s;
+        }
+        .form-btn:hover { box-shadow:0 0 35px rgba(0,212,255,.45); transform:translateY(-1px); }
+
+        /* ── FOOTER ── */
+        footer {
+            background:var(--bg); border-top:1px solid rgba(0,212,255,.07);
+            padding:2.5rem 5rem; display:flex; align-items:center;
+            justify-content:space-between; gap:1rem;
+        }
+        .footer-logo img { height:52px; width:auto; display:block; }
+        .footer-copy { font-size:.78rem; color:var(--gray); }
+        .footer-socials { display:flex; gap:.7rem; }
+        .soc {
+            width:36px; height:36px; background:rgba(255,255,255,.03);
+            border:1px solid rgba(255,255,255,.07); border-radius:4px;
+            display:flex; align-items:center; justify-content:center;
+            font-size:.72rem; font-weight:700; color:var(--gray); text-decoration:none;
+            transition:all .3s; font-family:var(--font-heading); letter-spacing:.05em;
+        }
+        .soc:hover { background:var(--blue-dim); border-color:rgba(0,212,255,.3); color:var(--blue); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width:1100px) {
+            nav, nav.scrolled { padding-left:2.5rem; padding-right:2.5rem; }
+            section { padding:5.5rem 2.5rem; }
+            #hero { padding:0 2.5rem; }
+            footer { padding:2rem 2.5rem; }
+            .about-grid { grid-template-columns:1fr; gap:3.5rem; }
+            .about-img-wrap { max-width:420px; }
+            .expertise-grid { grid-template-columns:1fr 1fr; }
+            .subs-grid { grid-template-columns:1fr 1fr; }
+            .contact-wrap { grid-template-columns:1fr; gap:3rem; }
+        }
+        @media (max-width:768px) {
+            nav, nav.scrolled { padding:1rem 1.5rem; }
+            .nav-links { display:none; }
+            .hamburger { display:flex; }
+            section { padding:4rem 1.5rem; }
+            #hero { padding:0 1.5rem; padding-top:5rem; }
+            footer { padding:1.8rem 1.5rem; flex-direction:column; text-align:center; }
+            .expertise-grid { grid-template-columns:1fr; }
+            .subs-grid { grid-template-columns:1fr 1fr; }
+            .company-flagship { flex-direction:column; gap:1.5rem; }
+            .form-row { grid-template-columns:1fr; }
+            .contact-form { padding:2rem 1.5rem; }
+            .expertise-top { flex-direction:column; align-items:flex-start; }
+            .g-item, .g-item.wide, .g-item.tall { grid-column:span 12; }
+            .g-item.wide .g-box { min-height:240px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+    <a href="#hero" class="nav-logo">
+        <img src="images/upm-logo.png" alt="UPM Productions">
+    </a>
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#expertise">Expertise</a></li>
+        <li><a href="#companies">Companies</a></li>
+        <li><a href="#gallery">Work</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu(this)">
+        <span></span><span></span><span></span>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-orb"></div>
+    <div class="hero-content">
+        <div class="hero-eyebrow">
+            <div class="hero-eyebrow-line"></div>
+            <span class="hero-eyebrow-text">UPM Productions</span>
+        </div>
+        <h1 class="hero-name">
+            JOSE LUIS<br>
+            <span class="nick">"PEPE"</span><br>
+            PAGAN
+        </h1>
+        <p class="hero-sub">Creative &nbsp;·&nbsp; Visionary</p>
+        <div class="hero-roles">
+            <span class="role-tag">Music Producer</span>
+            <span class="role-tag">TV Producer &amp; Creator</span>
+            <span class="role-tag">Showrunner</span>
+            <span class="role-tag">Songwriter</span>
+            <span class="role-tag">Soundtrack Writer</span>
+            <span class="role-tag">Musical Theatre Creator</span>
+            <span class="role-tag">IP Creator</span>
+            <span class="role-tag">Content Creator</span>
+        </div>
+        <div class="hero-ctas">
+            <a href="#gallery" class="btn-primary">View My Work</a>
+            <a href="#contact" class="btn-outline">Get In Touch</a>
+        </div>
+    </div>
+    <div class="scroll-hint">
+        <span>Scroll</span>
+        <div class="scroll-chevron"></div>
+    </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+        <span class="marquee-item">Music Production <span class="marquee-sep">✦</span></span>
+        <span class="marquee-item">TV Series Creator <span class="marquee-sep">✦</span></span>
+        <span class="marquee-item">Songwriter <span class="marquee-sep">✦</span></span>
+        <span class="marquee-item">Soundtrack Writer <span class="marquee-sep">✦</span></span>
+        <span class="marquee-item">IP Content Creator <span class="marquee-sep">✦</span></span>
+        <span class="marquee-item">UPM Productions <span class="marquee-sep">✦</span></span>
+        <span class="marquee-item">Trinity Entertainment USA <span class="marquee-sep">✦</span></span>
+        <span class="marquee-item">JLP Music <span class="marquee-sep">✦</span></span>
+        <span class="marquee-item">Music Production <span class="marquee-sep">✦</span></span>
+        <span class="marquee-item">TV Series Creator <span class="marquee-sep">✦</span></span>
+        <span class="marquee-item">Songwriter <span class="marquee-sep">✦</span></span>
+        <span class="marquee-item">Soundtrack Writer <span class="marquee-sep">✦</span></span>
+        <span class="marquee-item">IP Content Creator <span class="marquee-sep">✦</span></span>
+        <span class="marquee-item">UPM Productions <span class="marquee-sep">✦</span></span>
+        <span class="marquee-item">Trinity Entertainment USA <span class="marquee-sep">✦</span></span>
+        <span class="marquee-item">JLP Music <span class="marquee-sep">✦</span></span>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="about-grid">
+        <div class="about-img-wrap reveal">
+            <div class="about-img-frame"></div>
+            <div class="about-img-box">
+                <img src="images/pepe.jpg" alt="Jose Luis 'Pepe' Pagan">
+            </div>
+            <div class="about-stats">
+                <div class="stat-card"><div class="stat-num">20+</div><div class="stat-lbl">Years in Industry</div></div>
+                <div class="stat-card"><div class="stat-num">5</div><div class="stat-lbl">Companies</div></div>
+                <div class="stat-card"><div class="stat-num">6</div><div class="stat-lbl">Creative Disciplines</div></div>
+                <div class="stat-card"><div class="stat-num">∞</div><div class="stat-lbl">Creative Vision</div></div>
+            </div>
+        </div>
+        <div>
+            <div class="section-label reveal"><div class="section-label-line"></div><span class="section-label-text">About</span></div>
+            <h2 class="section-title reveal d1">THE MIND<br>BEHIND THE<br>CREATION</h2>
+            <div class="about-text reveal d2">
+                <p>Jose Luis <strong>"Pepe" Pagan</strong> is a multi-disciplinary creative force whose work spans music production, television, songwriting, film scoring, and intellectual property creation.</p>
+                <p>As the founder and driving force behind <strong>UPM Productions</strong> and its family of companies, Pepe brings a rare ability to operate simultaneously at the highest levels of music and entertainment — crafting hit records, developing original TV series, and building intellectual properties from the ground up.</p>
+                <p>His vision goes beyond individual projects. Pepe architects <strong>entire creative ecosystems</strong> — connecting music, story, brand, and culture into cohesive entertainment experiences that resonate across markets and platforms.</p>
+            </div>
+            <div class="reveal d3">
+                <a href="#contact" class="btn-primary" style="margin-top:1.8rem; display:inline-flex;">Work With Me</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+    <div class="expertise-top reveal">
+        <div>
+            <div class="section-label"><div class="section-label-line"></div><span class="section-label-text">Expertise</span></div>
+            <h2 class="section-title">WHAT I DO</h2>
+        </div>
+        <p class="section-subtitle" style="text-align:right; max-width:300px;">Six disciplines. One creative vision. Endless possibilities.</p>
+    </div>
+    <div class="expertise-grid">
+        <div class="exp-card reveal">
+            <div class="exp-num">01</div><div class="exp-icon">🎵</div>
+            <h3 class="exp-title">Music Production</h3>
+            <p class="exp-text">Crafting sonic landscapes that move people. From concept to master, producing records with depth, soul, and commercial impact across genres and markets.</p>
+        </div>
+        <div class="exp-card reveal d1">
+            <div class="exp-num">02</div><div class="exp-icon">📺</div>
+            <h3 class="exp-title">TV Series Production</h3>
+            <p class="exp-text">Creating and producing original television series from the ground up — developing concepts, building worlds, and guiding productions to screen.</p>
+        </div>
+        <div class="exp-card reveal d2">
+            <div class="exp-num">03</div><div class="exp-icon">✍️</div>
+            <h3 class="exp-title">Songwriting</h3>
+            <p class="exp-text">Writing songs that connect, tell stories, and endure. Crafting lyrics and melodies for artists across styles and markets with emotional precision.</p>
+        </div>
+        <div class="exp-card reveal d1">
+            <div class="exp-num">04</div><div class="exp-icon">🎬</div>
+            <h3 class="exp-title">Soundtrack Writing</h3>
+            <p class="exp-text">Composing original soundtracks that elevate visual storytelling. Music that amplifies emotion, builds tension, and defines the sonic identity of a production.</p>
+        </div>
+        <div class="exp-card reveal d2">
+            <div class="exp-num">05</div><div class="exp-icon">💡</div>
+            <h3 class="exp-title">IP Content Creation</h3>
+            <p class="exp-text">Developing original intellectual properties with lasting value — building universes, characters, and narratives designed to expand across formats and platforms.</p>
+        </div>
+        <div class="exp-card reveal d3">
+            <div class="exp-num">06</div><div class="exp-icon">🌐</div>
+            <h3 class="exp-title">Creative Direction</h3>
+            <p class="exp-text">Providing overarching creative leadership for complex multi-platform projects — unifying vision across music, media, brand, and culture at the highest level.</p>
+        </div>
+    </div>
+</section>
+
+<!-- COMPANIES -->
+<section id="companies">
+    <div class="companies-wrap">
+        <div class="reveal" style="margin-bottom:3.5rem;">
+            <div class="section-label"><div class="section-label-line"></div><span class="section-label-text">Companies</span></div>
+            <h2 class="section-title">THE ECOSYSTEM</h2>
+            <p class="section-subtitle">A family of companies built to create, produce, and distribute entertainment at every level.</p>
+        </div>
+        <div class="company-flagship reveal">
+            <div class="flagship-badge">UPM<br>PROD.</div>
+            <div>
+                <div class="flagship-name">UPM PRODUCTIONS</div>
+                <p class="flagship-desc">The flagship company and creative umbrella behind all of Pepe's ventures. UPM Productions is the engine that drives music, television, and intellectual property development — a full-spectrum entertainment production house operating at the intersection of artistry and business.</p>
+            </div>
+        </div>
+        <div class="subs-grid">
+            <div class="sub-card reveal">
+                <div class="sub-icon">🎵</div>
+                <div class="sub-name">UPM Hits</div>
+                <p class="sub-desc">Hit record development and music production. Creating chart-ready music for artists and brands.</p>
+            </div>
+            <div class="sub-card reveal d1">
+                <div class="sub-icon">👥</div>
+                <div class="sub-name">UPM Team</div>
+                <p class="sub-desc">The creative and production team powering projects across music, media, and content creation.</p>
+            </div>
+            <div class="sub-card reveal d2">
+                <div class="sub-icon">🎼</div>
+                <div class="sub-name">JLP Music</div>
+                <p class="sub-desc">Jose Luis Pagan's personal music publishing and production imprint for original works and scores.</p>
+            </div>
+            <div class="sub-card reveal d3">
+                <div class="sub-icon">🎬</div>
+                <div class="sub-name">Trinity Entertainment USA</div>
+                <p class="sub-desc">Television and IP development arm — creating original series and formats for the US market and beyond.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SELECTED WORKS -->
+<section id="gallery">
+    <div class="gallery-top reveal">
+        <div class="section-label"><div class="section-label-line"></div><span class="section-label-text">Portfolio</span></div>
+        <h2 class="section-title">SELECTED WORKS</h2>
+        <p class="section-subtitle">A curated selection of projects across music, television, and the stage.</p>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="works-tabs reveal">
+        <button class="works-tab active" onclick="switchTab(this,'music')">
+            <span class="tab-icon">🎵</span> Music Productions &amp; Songwriting
+        </button>
+        <button class="works-tab" onclick="switchTab(this,'tv')">
+            <span class="tab-icon">📺</span> TV Series
+        </button>
+        <button class="works-tab" onclick="switchTab(this,'theatre')">
+            <span class="tab-icon">🎭</span> Musical Theatre
+        </button>
+    </div>
+
+    <!-- Music Tab -->
+    <div class="works-panel active" id="tab-music">
+        <div class="works-grid">
+            <div class="work-card">
+                <div class="work-img"><div class="work-placeholder"><span>🎵</span><p>Add Project</p></div></div>
+                <div class="work-info"><div class="work-cat">Music Production</div><div class="work-title">Project Title</div></div>
+            </div>
+            <div class="work-card">
+                <div class="work-img"><div class="work-placeholder"><span>✍️</span><p>Add Project</p></div></div>
+                <div class="work-info"><div class="work-cat">Songwriting</div><div class="work-title">Project Title</div></div>
+            </div>
+            <div class="work-card">
+                <div class="work-img"><div class="work-placeholder"><span>🎵</span><p>Add Project</p></div></div>
+                <div class="work-info"><div class="work-cat">Music Production</div><div class="work-title">Project Title</div></div>
+            </div>
+            <div class="work-card">
+                <div class="work-img"><div class="work-placeholder"><span>✍️</span><p>Add Project</p></div></div>
+                <div class="work-info"><div class="work-cat">Songwriting</div><div class="work-title">Project Title</div></div>
+            </div>
+            <div class="work-card">
+                <div class="work-img"><div class="work-placeholder"><span>🎵</span><p>Add Project</p></div></div>
+                <div class="work-info"><div class="work-cat">Music Production</div><div class="work-title">Project Title</div></div>
+            </div>
+            <div class="work-card">
+                <div class="work-img"><div class="work-placeholder"><span>✍️</span><p>Add Project</p></div></div>
+                <div class="work-info"><div class="work-cat">Songwriting</div><div class="work-title">Project Title</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TV Series Tab -->
+    <div class="works-panel" id="tab-tv">
+        <div class="works-grid">
+            <div class="work-card">
+                <div class="work-img"><div class="work-placeholder"><span>📺</span><p>Add Project</p></div></div>
+                <div class="work-info"><div class="work-cat">TV Series</div><div class="work-title">Project Title</div></div>
+            </div>
+            <div class="work-card">
+                <div class="work-img"><div class="work-placeholder"><span>📺</span><p>Add Project</p></div></div>
+                <div class="work-info"><div class="work-cat">TV Series</div><div class="work-title">Project Title</div></div>
+            </div>
+            <div class="work-card">
+                <div class="work-img"><div class="work-placeholder"><span>📺</span><p>Add Project</p></div></div>
+                <div class="work-info"><div class="work-cat">TV Series</div><div class="work-title">Project Title</div></div>
+            </div>
+            <div class="work-card">
+                <div class="work-img"><div class="work-placeholder"><span>📺</span><p>Add Project</p></div></div>
+                <div class="work-info"><div class="work-cat">TV Series</div><div class="work-title">Project Title</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Musical Theatre Tab -->
+    <div class="works-panel" id="tab-theatre">
+        <div class="works-grid">
+            <div class="work-card">
+                <div class="work-img"><div class="work-placeholder"><span>🎭</span><p>Add Project</p></div></div>
+                <div class="work-info"><div class="work-cat">Musical Theatre</div><div class="work-title">Project Title</div></div>
+            </div>
+            <div class="work-card">
+                <div class="work-img"><div class="work-placeholder"><span>🎭</span><p>Add Project</p></div></div>
+                <div class="work-info"><div class="work-cat">Musical Theatre</div><div class="work-title">Project Title</div></div>
+            </div>
+            <div class="work-card">
+                <div class="work-img"><div class="work-placeholder"><span>🎭</span><p>Add Project</p></div></div>
+                <div class="work-info"><div class="work-cat">Musical Theatre</div><div class="work-title">Project Title</div></div>
+            </div>
+            <div class="work-card">
+                <div class="work-img"><div class="work-placeholder"><span>🎭</span><p>Add Project</p></div></div>
+                <div class="work-info"><div class="work-cat">Musical Theatre</div><div class="work-title">Project Title</div></div>
+            </div>
+        </div>
+    </div>
+
+    <p class="gallery-note reveal">More projects coming soon — <a href="#contact" style="color:var(--blue);text-decoration:none;opacity:1;">Get in touch</a></p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="contact-wrap">
+        <div class="contact-left">
+            <div class="section-label reveal"><div class="section-label-line"></div><span class="section-label-text">Contact</span></div>
+            <h2 class="section-title reveal d1">LET'S<br>CREATE<br>TOGETHER</h2>
+            <p class="reveal d2">Whether you're an artist, label, network, or brand — if you're looking for a creative partner who operates at the highest level, let's talk.</p>
+            <div class="c-detail reveal d2">
+                <div class="c-icon">📧</div>
+                <div>
+                    <div class="c-lbl">Email</div>
+                    <div class="c-val"><a href="mailto:paganstudio@gmail.com" style="color:inherit;text-decoration:none;">paganstudio@gmail.com</a></div>
+                </div>
+            </div>
+            <div class="c-detail reveal d3">
+                <div class="c-icon">📱</div>
+                <div>
+                    <div class="c-lbl">Instagram</div>
+                    <div class="c-val"><a href="https://www.instagram.com/joseluispepepagan" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">@joseluispepepagan</a></div>
+                </div>
+            </div>
+            <div class="c-detail reveal d3">
+                <div class="c-icon">🏢</div>
+                <div>
+                    <div class="c-lbl">Company</div>
+                    <div class="c-val">UPM Productions</div>
+                </div>
+            </div>
+        </div>
+        <div class="contact-form reveal d1">
+            <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="contact">
+                <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+                <div class="form-row">
+                    <div class="fg"><label for="name">Full Name</label><input type="text" id="name" name="name" placeholder="Your name" required></div>
+                    <div class="fg"><label for="email">Email Address</label><input type="email" id="email" name="email" placeholder="your@email.com" required></div>
+                </div>
+                <div class="fg">
+                    <label for="subject">I'm reaching out about…</label>
+                    <select id="subject" name="subject">
+                        <option value="">Select a topic</option>
+                        <option value="music-production">Music Production</option>
+                        <option value="tv-production">TV / Series Production</option>
+                        <option value="songwriting">Songwriting</option>
+                        <option value="score">Score / Film Music</option>
+                        <option value="ip-development">IP Development</option>
+                        <option value="collaboration">General Collaboration</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="fg"><label for="message">Your Message</label><textarea id="message" name="message" placeholder="Tell me about your project, vision, or idea…" required></textarea></div>
+                <button type="submit" class="form-btn">Send Message →</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <a href="#hero" class="footer-logo">
+        <img src="images/upm-logo.png" alt="UPM Productions">
+    </a>
+    <p class="footer-copy">© 2026 Jose Luis "Pepe" Pagan · All rights reserved</p>
+    <div class="footer-socials">
+        <a href="https://www.instagram.com/joseluispepepagan" target="_blank" rel="noopener" class="soc" title="Instagram">IG</a>
+        <a href="#" class="soc" title="Spotify">SP</a>
+        <a href="#" class="soc" title="YouTube">YT</a>
+        <a href="#" class="soc" title="LinkedIn">in</a>
+    </div>
+</footer>
+
+<script>
+    function switchTab(btn, tabId) {
+        document.querySelectorAll('.works-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.works-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + tabId).classList.add('active');
+    }
+
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold:0.08, rootMargin:'0px 0px -40px 0px' });
+    revealEls.forEach(el => obs.observe(el));
+
+    let menuOpen = false;
+    function toggleMenu(btn) {
+        menuOpen = !menuOpen;
+        const links = document.querySelector('.nav-links');
+        if (menuOpen) {
+            links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(8,11,20,.98);padding:2rem 1.5rem;gap:1.5rem;border-bottom:1px solid rgba(0,212,255,.1);backdrop-filter:blur(16px);';
+        } else { links.style.cssText = 'display:none;'; }
+        const spans = btn.querySelectorAll('span');
+        if (menuOpen) { spans[0].style.transform='rotate(45deg) translate(5px,5px)'; spans[1].style.opacity='0'; spans[2].style.transform='rotate(-45deg) translate(5px,-5px)'; }
+        else { spans[0].style.transform=''; spans[1].style.opacity=''; spans[2].style.transform=''; }
+    }
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => { if (window.innerWidth < 768 && menuOpen) toggleMenu(document.querySelector('.hamburger')); });
+    });
+    window.addEventListener('resize', () => { if (window.innerWidth >= 768) { document.querySelector('.nav-links').style.cssText=''; menuOpen=false; } });
+</script>
+</body>
+</html>
